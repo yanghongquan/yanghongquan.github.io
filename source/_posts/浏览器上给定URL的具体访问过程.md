@@ -2,7 +2,6 @@
 title: 浏览器上给定URL的具体访问过程 #文章标题
 date: 2018-11-08 22:00:14 #文章生成时间
 tags: #文章标签 可以省略
-     - 笔记
      - JavaWeb
 description: 
 ---
