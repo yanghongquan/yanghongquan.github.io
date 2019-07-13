@@ -89,7 +89,7 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://yanghongquan.github.io/2019/04/15/TCP与UDP/%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B.png">
 <meta property="og:image" content="https://yanghongquan.github.io/2019/04/15/TCP与UDP/%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B.png">
-<meta property="og:updated_time" content="2019-07-13T09:09:03.070Z">
+<meta property="og:updated_time" content="2019-07-13T10:30:15.749Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="TCP与UDP的比较">
 <meta name="twitter:description" content="1、UDP和TCP区别1、UDP（用户数据报协议）是无连接的，不可靠的，尽可能大量的发送数据包，没有流量控制、拥塞避免、丢包不重传，无序  UDP因为无连接，随时可以向对端发送数据包，且本身处理简单高效，常用于：数据包总量较少的通信（DNS、SNMP）；视频、音频等对实时性要求高的多媒体通信；广播通信、多播通信  2、TCP面向连接的，双方必须先创建连接才能发送数据，而且有一系列的方式保证传输可靠">
@@ -421,7 +421,7 @@
 <p>来源：<a href="https://blog.csdn.net/cmm0401/article/details/77878998" target="_blank" rel="noopener">https://blog.csdn.net/cmm0401/article/details/77878998</a></p>
 <h2 id="3、为什么要三次握手四次挥手？"><a href="#3、为什么要三次握手四次挥手？" class="headerlink" title="3、为什么要三次握手四次挥手？"></a>3、为什么要三次握手四次挥手？</h2><p>三次握手是为了建立可靠连接，防止已经失效的连接请求突然到达造成错误。</p>
 <p>四次挥手是为了保证完成数据传输。</p>
-<h2 id="4、为什么状态还需要等后才能返回到状态？"><a href="#4、为什么状态还需要等后才能返回到状态？" class="headerlink" title="4、为什么状态还需要等后才能返回到状态？"></a>4、为什么状态还需要等后才能返回到状态？</h2><p>1、MSL是指报文在网络上最长存活时间，这是因为虽然双方都同意关闭连接了，而且握手的4个报文也都协调和发送完毕，按理可以直接回到CLOSED状态（就好比从状态到状态那样）；但是因为我们必须要假想网络是不可靠的，你无法保证你最后发送的ACK报文会一定被对方收到，因此对方处于状态下的可能会因为超时未收到报文，而重发报文，所以这个状态的作用就是用来重发可能丢失的报文。</p>
+<h2 id="4、为什么状态还需要等2MSL后才能返回到CLOSED状态？"><a href="#4、为什么状态还需要等2MSL后才能返回到CLOSED状态？" class="headerlink" title="4、为什么状态还需要等2MSL后才能返回到CLOSED状态？"></a>4、为什么状态还需要等2MSL后才能返回到CLOSED状态？</h2><p>1、MSL是指报文在网络上最长存活时间，这是因为虽然双方都同意关闭连接了，而且握手的4个报文也都协调和发送完毕，按理可以直接回到CLOSED状态（就好比从状态到状态那样）；但是因为我们必须要假想网络是不可靠的，你无法保证你最后发送的ACK报文会一定被对方收到，因此对方处于状态下的可能会因为超时未收到报文，而重发报文，所以这个状态的作用就是用来重发可能丢失的报文。</p>
 <p>2、关闭这个链接，过一段时间后在 相同的IP地址和端口建立另一个连接。后一个链接成为前一个的化身。因为它们的IP地址和端口号都相同。TCP必须防止来自某一个连接的老的重复分组在连 接已经终止后再现，从而被误解成属于同一链接的某一个某一个新的化身。为做到这一点，TCP将不给处于TIME_WAIT状态的链接发起新的化身。既然 TIME_WAIT状态的持续时间是MSL的2倍，这就足以让某个方向上的分组最多存活msl秒即被丢弃，另一个方向上的应答最多存活msl秒也被丢弃。 通过实施这个规则，我们就能保证每成功建立一个TCP连接时。来自该链接先前化身的重复分组都已经在网络中消逝了。</p>
 
       
@@ -613,7 +613,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、UDP和TCP区别"><span class="nav-number">1.</span> <span class="nav-text">1、UDP和TCP区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、TCP如何保证可靠性"><span class="nav-number">2.</span> <span class="nav-text">2、TCP如何保证可靠性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、为什么要三次握手四次挥手？"><span class="nav-number">3.</span> <span class="nav-text">3、为什么要三次握手四次挥手？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4、为什么状态还需要等后才能返回到状态？"><span class="nav-number">4.</span> <span class="nav-text">4、为什么状态还需要等后才能返回到状态？</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、UDP和TCP区别"><span class="nav-number">1.</span> <span class="nav-text">1、UDP和TCP区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、TCP如何保证可靠性"><span class="nav-number">2.</span> <span class="nav-text">2、TCP如何保证可靠性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、为什么要三次握手四次挥手？"><span class="nav-number">3.</span> <span class="nav-text">3、为什么要三次握手四次挥手？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4、为什么状态还需要等2MSL后才能返回到CLOSED状态？"><span class="nav-number">4.</span> <span class="nav-text">4、为什么状态还需要等2MSL后才能返回到CLOSED状态？</span></a></li></ol></div>
             
 
           </div>
