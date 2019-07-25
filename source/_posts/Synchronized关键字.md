@@ -2,10 +2,10 @@
 title: Synchronized关键字 #文章标题
 date: 2018-10-10 22:00:14 #文章生成时间
 tags: #文章标签 可以省略
-     - 笔记
+     - 并发
      - Java
 description: 
----
+categories: 读书笔记
 ---
 
 ### 1、作用

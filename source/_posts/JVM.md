@@ -5,6 +5,7 @@ tags: #文章标签 可以省略
      - 笔记
      - JVM
 description: 
+categories: 读书笔记
 ---
 ## 1、内存区域
 

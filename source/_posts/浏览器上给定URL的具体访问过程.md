@@ -4,6 +4,7 @@ date: 2018-11-08 22:00:14 #文章生成时间
 tags: #文章标签 可以省略
      - JavaWeb
 description: 
+categories: HTTP
 ---
 
 ### 1、Http协议
