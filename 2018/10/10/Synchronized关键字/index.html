@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="笔记,Java,">
+  <meta name="keywords" content="并发,Java,">
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="1、作用保证同一时刻只有一个线程执行该段代码，以达到保证并发安全的效果 2、两种用法 对象锁  方法锁、同步代码块锁   类锁    synchronized修饰静态的方法  指定锁位Class对象 3、类锁不管Java对象有多少个实例对象，但是只有一个class对象，通过给class对象上锁达到同步的效果 4、访问同一个对象实例的两个不同的synchronized普通方法，由于默认获取的是th">
-<meta name="keywords" content="笔记,Java">
+<meta name="description" content="1、作用保证同一时刻只有一个线程执行该段代码，以达到保证并发安全的效果 2、两种用法 对象锁  方法锁、同步代码块锁   类锁    synchronized修饰静态的方法  指定锁位Class对象 3、类锁不管Java对象有多少个实例对象，但是只有一个class对象，通过给class对象上锁达到同步的效果 4、访问同一个对象实例的两个不同的synchronized普通方法，由于默认获取的是thi">
+<meta name="keywords" content="并发,Java">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Synchronized关键字">
 <meta property="og:url" content="https://yanghongquan.github.io/2018/10/10/Synchronized关键字/index.html">
 <meta property="og:site_name" content="yanghongquan">
-<meta property="og:description" content="1、作用保证同一时刻只有一个线程执行该段代码，以达到保证并发安全的效果 2、两种用法 对象锁  方法锁、同步代码块锁   类锁    synchronized修饰静态的方法  指定锁位Class对象 3、类锁不管Java对象有多少个实例对象，但是只有一个class对象，通过给class对象上锁达到同步的效果 4、访问同一个对象实例的两个不同的synchronized普通方法，由于默认获取的是th">
+<meta property="og:description" content="1、作用保证同一时刻只有一个线程执行该段代码，以达到保证并发安全的效果 2、两种用法 对象锁  方法锁、同步代码块锁   类锁    synchronized修饰静态的方法  指定锁位Class对象 3、类锁不管Java对象有多少个实例对象，但是只有一个class对象，通过给class对象上锁达到同步的效果 4、访问同一个对象实例的两个不同的synchronized普通方法，由于默认获取的是thi">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-07-13T08:18:23.543Z">
+<meta property="og:updated_time" content="2019-07-25T09:21:34.089Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Synchronized关键字">
-<meta name="twitter:description" content="1、作用保证同一时刻只有一个线程执行该段代码，以达到保证并发安全的效果 2、两种用法 对象锁  方法锁、同步代码块锁   类锁    synchronized修饰静态的方法  指定锁位Class对象 3、类锁不管Java对象有多少个实例对象，但是只有一个class对象，通过给class对象上锁达到同步的效果 4、访问同一个对象实例的两个不同的synchronized普通方法，由于默认获取的是th">
+<meta name="twitter:description" content="1、作用保证同一时刻只有一个线程执行该段代码，以达到保证并发安全的效果 2、两种用法 对象锁  方法锁、同步代码块锁   类锁    synchronized修饰静态的方法  指定锁位Class对象 3、类锁不管Java对象有多少个实例对象，但是只有一个class对象，通过给class对象上锁达到同步的效果 4、访问同一个对象实例的两个不同的synchronized普通方法，由于默认获取的是thi">
 
 
 
@@ -337,6 +337,28 @@
           </span>
 
           
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/读书笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">读书笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -383,8 +405,7 @@
       
 
       
-        <hr>
-<h3 id="1、作用"><a href="#1、作用" class="headerlink" title="1、作用"></a>1、作用</h3><p>保证同一时刻只有一个线程执行该段代码，以达到保证并发安全的效果</p>
+        <h3 id="1、作用"><a href="#1、作用" class="headerlink" title="1、作用"></a>1、作用</h3><p>保证同一时刻只有一个线程执行该段代码，以达到保证并发安全的效果</p>
 <h3 id="2、两种用法"><a href="#2、两种用法" class="headerlink" title="2、两种用法"></a>2、两种用法</h3><ul>
 <li><p>对象锁</p>
 <blockquote>
@@ -439,7 +460,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/笔记/" rel="tag"><i class="fa fa-tag"></i> 笔记</a>
+            <a href="/tags/并发/" rel="tag"><i class="fa fa-tag"></i> 并发</a>
           
             <a href="/tags/Java/" rel="tag"><i class="fa fa-tag"></i> Java</a>
           
@@ -545,12 +566,21 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
             
 
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
             
 
             
@@ -558,7 +588,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -641,7 +671,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">8.5k</span>
+    <span title="Site words total count">17.5k</span>
   
 </div>
 
