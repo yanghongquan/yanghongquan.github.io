@@ -295,6 +295,179 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://yanghongquan.github.io/2019/07/08/高性能MySQL/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="yanghongquan">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="http://wx3.sinaimg.cn/mw690/dc90a2b5ly8fk3p9fj079j20b40b4aa3.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="yanghongquan">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/07/08/高性能MySQL/" itemprop="url">高性能MySQL</a></h1>
+        
+
+        <div class="post-meta">
+			
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-08T22:00:14+08:00">
+                2019-07-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/读书笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">读书笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  4.2k
+                </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          1、MySQL架构1、逻辑架构1、最上层：连接管理、授权认证、安全等。每个客户端在服务器进程中都有一个线程，这个连接的查询只会在这个单独的线程中执行，该线程轮流在某个CPU核心或者CPU运行。
+2、第二层：MySQL核心功能，包括解析、分析、优化、缓存以及所有内置函数（日期、时间、数学和加密函数），跨存储引擎的功能包括存储过程、触发器、视图等。
+3、第三层：存储引擎，负责数据存储和提取。
+2、并发
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/07/08/高性能MySQL/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+	
+	
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://yanghongquan.github.io/2019/06/15/Redis的设计与实现/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -408,9 +581,7 @@
       
         
           
-          1、数据结构与对象1、SDS简单动态字符串（Redis的默认字符串表示)1、redis需要一个可以被修改的字符串值时就会使用SDS表示字符串值。比如在Redis数据库里，包含字符串值的键值对在底层都是由SDS实现的。
-2、SDS还被用作缓冲区（buffer）：AOF模块中的AOF缓冲区，以及客户端状态的输入缓冲区。
-3、SDS遵循C字符串以空字符结尾的惯例，但是保存空字符的1字节空间不计算在SDS
+          1、数据结构与对象1、SDS简单动态字符串（Redis的默认字符串表示)1、redis需要一个可以被修改的字符串值时就会使用SDS表示字符串值。比如在Redis数据库里，包含字符串值的键值对在底层都是由SDS实现的。2、SDS还被用作缓冲区（buffer）：AOF模块中的AOF缓冲区，以及客户端状态的输入缓冲区。3、SDS遵循C字符串以空字符结尾的惯例，但是保存空字符的1字节空间不计算在SDS的l
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -582,9 +753,7 @@
           
           1、UDP和TCP区别1、UDP（用户数据报协议）是无连接的，不可靠的，尽可能大量的发送数据包，没有流量控制、拥塞避免、丢包不重传，无序
 
-UDP因为无连接，随时可以向对端发送数据包，且本身处理简单高效，常用于：数据包总量较少的通信（DNS、SNMP）；视频、音频等对实时性要求高的多媒体通信；广播通信、多播通信
-
-2、TCP面向连接的，双方必须先创建连接才能发送数据，而且有一系列的方式保证传输可靠
+UDP因为无连接，随时可以向对端发送数据包，且本身处理简单高效，常用于：数据包总量较少的通信（DNS、SNMP）；视频、音频等对实时性要求高的多媒体通信；广播通信、多播通信2、TCP面向连接的，双方必须先创建连接才能发送数据，而且有一系列的方式保证传输可靠，有
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -727,7 +896,7 @@ UDP因为无连接，随时可以向对端发送数据包，且本身处理简�
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  697
+                  696
                 </span>
               
 
@@ -755,11 +924,10 @@ UDP因为无连接，随时可以向对端发送数据包，且本身处理简�
         
           
           1、Http协议基于应用层的一个规范标准，通信双方都要遵守
-2、一次Http请求的完整过程1、浏览器输入一个地址，首先要进行域名解析，浏览器先去系统的host文件查找有没有域名对应的IP，如果没有再去本地DNS服务器（由运营商提供）查询是否有对应的IP地址；
-2、本地DNS服务器如果没有，需要到根域服务器查询，查询方式有两种：
+2、一次Http请求的完整过程1、浏览器输入一个地址，首先要进行域名解析，浏览器先去系统的host文件查找有没有域名对应的IP，如果没有再去本地DNS服务器（由运营商提供）查询是否有对应的IP地址；2、本地DNS服务器如果没有，需要到根域服务器查询，查询方式有两种：
 
 迭代查询
-当遇到自己服务器不能回答的DNS查询请求时，把能解析该域名
+当遇到自己服务器不能回答的DNS查询请求时，把能解析该域名的
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -931,17 +1099,20 @@ UDP因为无连接，随时可以向对端发送数据包，且本身处理简�
           
           1、内存区域1、堆内存
 所有的对象实例都存放在堆内存，所有线程共享的堆内存
-Java堆自动化管理，通过垃圾回收机制自动清理垃圾对象
-分为新生代（Eden、s0、s1）和老年代
 
+Java堆自动化管理，通过垃圾回收机制自动清理垃圾对象
+
+分为新生代（Eden、s0、s1）和老年代
 2、栈
 线程私有的内存空间（三部分：局部变量表、操作数栈、帧数据区）
-随着线程的结束而结束
 
+随着线程的结束而结束
 3、方法区
 线程共享，保存已经被加载的类信息、方法、常量池、静态变量、即时编译器编译后的代码数据。
+
 可以理解为永久区
-这部分的内
+
+这部
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1114,19 +1285,17 @@ Java堆自动化管理，通过垃圾回收机制自动清理垃圾对象
           1、作用保证同一时刻只有一个线程执行该段代码，以达到保证并发安全的效果
 2、两种用法
 对象锁
-
 方法锁、同步代码块锁
 
 
 类锁
-
-
-
 synchronized修饰静态的方法
+
+
 
 指定锁位Class对象
 3、类锁不管Java对象有多少个实例对象，但是只有一个class对象，通过给class对象上锁达到同步的效果
-4、访问同一个对象实例的两个不同的synchronized普通方法，由于默认获取的是thi
+4、访问同一个对象实例的两个不同的synchronized普通方法，由于默认获取的是this锁
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1301,7 +1470,8 @@ synchronized修饰静态的方法
 Java中因为类型参数会被替换为object，所以泛型中不能用基本数据类型Pair&lt;int&gt; minmax = new Pair&lt;int&gt;(1,100)不合法
 
 2、列表和队列
-迭代的陷阱：在迭代的中间调用容器的删除方法```javapublic void remove(ArrayList list) {for (Integer 
+迭代的陷阱：在迭代的中间调用容器的删除方法
+12345678910public void remove(ArrayList&lt;Integer&gt; 
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1393,7 +1563,7 @@ Java中因为类型参数会被替换为object，所以泛型中不能用基本�
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -1415,7 +1585,7 @@ Java中因为类型参数会被替换为object，所以泛型中不能用基本�
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -1482,7 +1652,7 @@ Java中因为类型参数会被替换为object，所以泛型中不能用基本�
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">17.5k</span>
+    <span title="Site words total count">21.7k</span>
   
 </div>
 

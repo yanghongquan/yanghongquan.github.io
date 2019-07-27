@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="1、泛型 好处：更好的安全性、更好的可读性 Java中因为类型参数会被替换为object，所以泛型中不能用基本数据类型Pair&amp;lt;int&amp;gt; minmax = new Pair&amp;lt;int&amp;gt;(1,100)不合法  2、列表和队列 迭代的陷阱：在迭代的中间调用容器的删除方法```javapublic void remove(ArrayList list) {for (Integer">
+<meta name="description" content="1、泛型 好处：更好的安全性、更好的可读性 Java中因为类型参数会被替换为object，所以泛型中不能用基本数据类型Pair&amp;lt;int&amp;gt; minmax = new Pair&amp;lt;int&amp;gt;(1,100)不合法  2、列表和队列 迭代的陷阱：在迭代的中间调用容器的删除方法 12345678910public void remove(ArrayList&amp;lt;Integer&amp;gt;">
 <meta name="keywords" content="笔记,Java编程的逻辑">
 <meta property="og:type" content="article">
 <meta property="og:title" content="泛型与容器">
 <meta property="og:url" content="https://yanghongquan.github.io/2018/10/08/泛型与容器/index.html">
 <meta property="og:site_name" content="yanghongquan">
-<meta property="og:description" content="1、泛型 好处：更好的安全性、更好的可读性 Java中因为类型参数会被替换为object，所以泛型中不能用基本数据类型Pair&amp;lt;int&amp;gt; minmax = new Pair&amp;lt;int&amp;gt;(1,100)不合法  2、列表和队列 迭代的陷阱：在迭代的中间调用容器的删除方法```javapublic void remove(ArrayList list) {for (Integer">
+<meta property="og:description" content="1、泛型 好处：更好的安全性、更好的可读性 Java中因为类型参数会被替换为object，所以泛型中不能用基本数据类型Pair&amp;lt;int&amp;gt; minmax = new Pair&amp;lt;int&amp;gt;(1,100)不合法  2、列表和队列 迭代的陷阱：在迭代的中间调用容器的删除方法 12345678910public void remove(ArrayList&amp;lt;Integer&amp;gt;">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-07-25T09:20:35.250Z">
+<meta property="og:updated_time" content="2019-07-27T12:11:38.285Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="泛型与容器">
-<meta name="twitter:description" content="1、泛型 好处：更好的安全性、更好的可读性 Java中因为类型参数会被替换为object，所以泛型中不能用基本数据类型Pair&amp;lt;int&amp;gt; minmax = new Pair&amp;lt;int&amp;gt;(1,100)不合法  2、列表和队列 迭代的陷阱：在迭代的中间调用容器的删除方法```javapublic void remove(ArrayList list) {for (Integer">
+<meta name="twitter:description" content="1、泛型 好处：更好的安全性、更好的可读性 Java中因为类型参数会被替换为object，所以泛型中不能用基本数据类型Pair&amp;lt;int&amp;gt; minmax = new Pair&amp;lt;int&amp;gt;(1,100)不合法  2、列表和队列 迭代的陷阱：在迭代的中间调用容器的删除方法 12345678910public void remove(ArrayList&amp;lt;Integer&amp;gt;">
 
 
 
@@ -410,88 +410,66 @@
 <li>Java中因为类型参数会被替换为object，所以泛型中不能用基本数据类型<code>Pair&lt;int&gt; minmax = new Pair&lt;int&gt;(1,100)</code>不合法</li>
 </ul>
 <h3 id="2、列表和队列"><a href="#2、列表和队列" class="headerlink" title="2、列表和队列"></a>2、列表和队列</h3><ul>
-<li>迭代的陷阱：在迭代的中间调用容器的删除方法<br>```java<br>public void remove(ArrayList<integer> list) {<br>for (Integer a : list) {<pre><code>if (a &lt;= 100) {
-    list.remove(a) //抛出ConcurrentModificationException
-    }
-}</code></pre>}<br>/**<br>迭代器内部会维护一些索引位置相关的数据，迭代过程中容器不能发生结构性变化（添加、插入、删除），否则索引位置就失效。</integer></li>
-<li>/<pre><code class="*">&gt; 1、可随机访问，按照索引访问效率高
-</code></pre>
+<li><p>迭代的陷阱：在迭代的中间调用容器的删除方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">remove</span><span class="params">(ArrayList&lt;Integer&gt; list)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">for</span> (Integer a : list) &#123;</span><br><span class="line">      <span class="keyword">if</span> (a &lt;= <span class="number">100</span>) &#123;</span><br><span class="line">          list.remove(a) <span class="comment">//抛出ConcurrentModificationException</span></span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">迭代器内部会维护一些索引位置相关的数据，迭代过程中容器不能发生结构性变化（添加、插入、删除），否则索引位置就失效。</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
 </li>
-</ul>
-<p>2、除非数组已排序，否则按照内容查找元素效率低，性能与数组长度成正比<br>3、添加N个元素效率为O(N)，N为数组长度<br>4、插入和删除元素效率低，因为需要移动元素，具体为O(N)</p>
-<ul>
-<li>LinkedList内部是双向链表实现，每个元素在内存都是单独存放<blockquote>
-<p>1、按需分配空间</p>
+<li><p>ArrayList不是线程安全的，内部采用动态数组实现</p>
+<blockquote>
+<p>1、可随机访问，按照索引访问效率高<br>2、除非数组已排序，否则按照内容查找元素效率低，性能与数组长度成正比<br>3、添加N个元素效率为O(N)，N为数组长度<br>4、插入和删除元素效率低，因为需要移动元素，具体为O(N)</p>
+</blockquote>
+</li>
+<li><p>LinkedList内部是双向链表实现，每个元素在内存都是单独存放</p>
+<blockquote>
+<p>1、按需分配空间<br>2、不可以随机访问，按照索引访问效率低<br>3、不管是否排序，按照内容查找元素效率都低<br>4、两端添加、删除元素效率高<br>5、中间插入、删除元素要先定位，效率较低，但修改本身效率很高</p>
+</blockquote>
+</li>
+<li><p>ArrayDeque实现了双端队列，内部使用循环数组实现</p>
+<blockquote>
+<p>1、两端添加、删除效率很高<br>2、根据元素内容查找和删除的效率较低<br>3、没有索引位置的概念，不能根据索引进行操作</p>
 </blockquote>
 </li>
 </ul>
-<p>2、不可以随机访问，按照索引访问效率低<br>3、不管是否排序，按照内容查找元素效率都低<br>4、两端添加、删除元素效率高<br>5、中间插入、删除元素要先定位，效率较低，但修改本身效率很高</p>
-<ul>
-<li>ArrayDeque实现了双端队列，内部使用循环数组实现<blockquote>
-<p>1、两端添加、删除效率很高</p>
-</blockquote>
-</li>
-</ul>
-<p>2、根据元素内容查找和删除的效率较低<br>3、没有索引位置的概念，不能根据索引进行操作</p>
 <h3 id="3、Map和Set"><a href="#3、Map和Set" class="headerlink" title="3、Map和Set"></a>3、Map和Set</h3><ul>
-<li>HashMap：实现Map接口，内部有一个哈希表即数组table，每个table[i]指向一个单向链表，根据键存取值，用键算出hash值，取模得到数组中的索引位置buketIndex，然后操作table[buketIndex]指向的单向链表<blockquote>
-<p>1、根据键存取值效率很高</p>
+<li><p>HashMap：实现Map接口，内部有一个哈希表即数组table，每个table[i]指向一个单向链表，根据键存取值，用键算出hash值，取模得到数组中的索引位置buketIndex，然后操作table[buketIndex]指向的单向链表</p>
+<blockquote>
+<p>1、根据键存取值效率很高<br>2、键值对没有顺序，因为hash值是随机的<br>3、线程不安全</p>
 </blockquote>
 </li>
-</ul>
-<p>2、键值对没有顺序，因为hash值是随机的<br>3、线程不安全</p>
-<ul>
 <li><p>HashSet</p>
 <ul>
-<li><p>set是没有重复元素，不保证顺序的容器接口</p>
-</li>
-<li><p>与HashMap类似，HashSet要求元素重写hashCode和equals方法</p>
-</li>
-<li><p>实现set接口，内部利用HasnMap实现：1、没有重复元素；2、高效添加、删除元素以及判断元素是否存在；3、没有顺序</p>
-</li>
+<li>set是没有重复元素，不保证顺序的容器接口</li>
+<li>与HashMap类似，HashSet要求元素重写hashCode和equals方法</li>
+<li>实现set接口，内部利用HasnMap实现：1、没有重复元素；2、高效添加、删除元素以及判断元素是否存在；3、没有顺序</li>
 </ul>
 </li>
 <li><p>排序二叉树</p>
 <ul>
-<li><p>TreeMap和TreeSet的实现基础</p>
-</li>
-<li><p>顺序特点：左子树所有节点小于该节点，右子树所有节点大于gai</p>
-</li>
-<li><p>基本的保存、删除、查找效率为O(h),h为树的高度</p>
-</li>
-<li><p>AVL树保证树的高度平衡，红黑树保证大致平衡</p>
-</li>
+<li>TreeMap和TreeSet的实现基础</li>
+<li>顺序特点：左子树所有节点小于该节点，右子树所有节点大于gai</li>
+<li>基本的保存、删除、查找效率为O(h),h为树的高度</li>
+<li>AVL树保证树的高度平衡，红黑树保证大致平衡</li>
 </ul>
 </li>
 <li><p>TreeMap</p>
 <ul>
-<li><p>按键而不是按值有序，它要么键实现Comparable接口，要么创建时传递一个Comparator对象</p>
-</li>
-<li><p>内部是红黑树实现的</p>
-</li>
-<li><p>根据键保存、查找、删除效率较高，O(h)</p>
-</li>
+<li>按键而不是按值有序，它要么键实现Comparable接口，要么创建时传递一个Comparator对象</li>
+<li>内部是红黑树实现的</li>
+<li>根据键保存、查找、删除效率较高，O(h)</li>
 </ul>
 </li>
 <li><p>TreeSet</p>
 <ul>
-<li><p>实现了：排重和有序。排重是基于比较结果的</p>
-</li>
-<li><p>基于TreeMap</p>
-</li>
-<li><p>没有重复元素</p>
-</li>
-<li><p>添加、删除元素，判断元素是否存在效率较高</p>
-</li>
-<li><p>有序</p>
-</li>
-<li><p>要求Comparable接口或者通过构造方法提供一个Comparator对象</p>
-</li>
+<li>实现了：排重和有序。排重是基于比较结果的</li>
+<li>基于TreeMap</li>
+<li>没有重复元素</li>
+<li>添加、删除元素，判断元素是否存在效率较高</li>
+<li>有序</li>
+<li>要求Comparable接口或者通过构造方法提供一个Comparator对象</li>
 </ul>
 </li>
 <li><p>LinkedHashMap</p>
 <ul>
-<li><p>是HashMap的子类，内部还有一个双向链表维护键值对的顺序</p>
+<li><p>HashMap的子类，内部还有一个双向链表维护键值对的顺序</p>
 </li>
 <li><p>插入顺序：先添加的在前面，后添加的在后面，修改操作不影响顺序</p>
 </li>
@@ -499,9 +477,8 @@
 </li>
 <li><p>用于缓存</p>
 <blockquote>
-<p>1、缓存就是用来保存常用的数据，容量小访问快</p>
+<p>1、缓存就是用来保存常用的数据，容量小访问快<br>2、LRU是缓存里一种流行的替换算法，即当缓存满了，最近最少使用的先被清理出去</p>
 </blockquote>
-<p>2、LRU是缓存里一种流行的替换算法，即当缓存满了，最近最少使用的先被清理出去</p>
 </li>
 <li><p>内部维护一个单独的双向链表，默认是插入顺序</p>
 </li>
@@ -514,37 +491,22 @@
 </li>
 </ul>
 <h3 id="4、堆与优先级队列"><a href="#4、堆与优先级队列" class="headerlink" title="4、堆与优先级队列"></a>4、堆与优先级队列</h3><ul>
-<li><p>堆</p>
-<ul>
-<li><p>是完全二叉树（给定任意一个节点可以根据其编号直接快速计算出其父节点和孩子节点编号）</p>
-</li>
-<li><p>逻辑概念上是一颗完全二叉树，物理存储上使用数组，还有一定的顺序要求</p>
-</li>
-<li><p>根据顺序分为：最大堆和最小堆</p>
-</li>
-<li><p>最大堆：每个节点都不大于其父节点。最小堆相反</p>
-</li>
-<li><p>添加和删除元素的时候有两个关键的过程以保持堆的性质，一个是向上调整一个是向下调整</p>
-</li>
+<li>堆<ul>
+<li>是完全二叉树（给定任意一个节点可以根据其编号直接快速计算出其父节点和孩子节点编号）</li>
+<li>逻辑概念上是一颗完全二叉树，物理存储上使用数组，还有一定的顺序要求</li>
+<li>根据顺序分为：最大堆和最小堆</li>
+<li>最大堆：每个节点都不大于其父节点。最小堆相反</li>
+<li>添加和删除元素的时候有两个关键的过程以保持堆的性质，一个是向上调整一个是向下调整</li>
 </ul>
 </li>
-<li><p>PriorityQueue优先级队列</p>
-<ul>
-<li><p>队列长度没有限制，每个元素都有优先级，队头的元素优先级最高</p>
-</li>
-<li><p>内部用堆实现，内部元素不是完全有序的，不过逐个出队会得到有序的输出</p>
-</li>
-<li><p>查看头部元素效率很高，O(1),入队出队效率较高，O(log2(N))</p>
-</li>
-<li><p>根据值查找和删除元素效率比较低，O(N)</p>
-</li>
-<li><p>求中值：元素是动态添加（用一个最大堆一个最小堆）</p>
-<blockquote>
-<p>步骤：</p>
+<li>PriorityQueue优先级队列<ul>
+<li>队列长度没有限制，每个元素都有优先级，队头的元素优先级最高</li>
+<li>内部用堆实现，内部元素不是完全有序的，不过逐个出队会得到有序的输出</li>
+<li>查看头部元素效率很高，O(1),入队出队效率较高，O(log2(N))</li>
+<li>根据值查找和删除元素效率比较低，O(N)</li>
+<li>求中值：元素是动态添加（用一个最大堆一个最小堆）<blockquote>
+<p>步骤：<br>1、设当前中位数为m，最大堆维护&lt;=m的元素，最小堆维护&gt;=m的元素，但两个堆都不包含m<br>2、当新元素e到达与m进行比较，若e&lt;=m将其加入最大堆，反之加入最小堆<br>3、第2步之后如果最大堆和最小堆元素个数差&gt;=2，则将m加入元素个数少的堆中，然后从元素个数多的堆将根节点移除并赋值给m</p>
 </blockquote>
-<p>1、设当前中位数为m，最大堆维护&lt;=m的元素，最小堆维护&gt;=m的元素，但两个堆都不包含m</p>
-<p>2、当新元素e到达与m进行比较，若e&lt;=m将其加入最大堆，反之加入最小堆</p>
-<p>3、第2步之后如果最大堆和最小堆元素个数差&gt;=2，则将m加入元素个数少的堆中，然后从元素个数多的堆将根节点移除并赋值给m</p>
 </li>
 </ul>
 </li>
@@ -677,7 +639,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -699,7 +661,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -782,7 +744,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">17.5k</span>
+    <span title="Site words total count">21.7k</span>
   
 </div>
 
