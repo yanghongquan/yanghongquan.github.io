@@ -1,11 +1,13 @@
 ---
-title: ArrayList #文章标题
+title: ArrayList和LinkedList #文章标题
 date: 2019-06-10 20:00:14 #文章生成时间
 tags: #文章标签 可以省略
      - 集合
 description: 
 categories: 源码学习
 ---
+## 1、ArrayList
+
 1、继承了AbstractList类，实现了List接口、RandomAccess接口。
 
 > RandomAccess接口是一个标识，实现这个接口的数据结构支持随机访问，因为ArrayList底层是数组实现，天然支持随机访问，所以标识。
@@ -55,3 +57,38 @@ private static int hugeCapacity(int minCapacity) {
  `Arrays.copyOf` 是内部新建一个数组，然后把传入的数组元素拷贝到新数组，返回新数组。
 
 6、remove方法是把元素往前移，然后把末尾的位置指向null，clear方法是把所有位置指向null，然后交给垃圾回收机制处理。
+
+## 2、LinkedList
+
+1、继承了AbstractSequentialList类，是一个实现了List接口、Deque接口的双端链表，支持高效的插入删除，也具有队列的特性。
+
+2、不是线程安全的，线程安全可以调用静态类Collections中的synchronizedList方法。
+
+3、LinkedList节点类的定义：
+
+```java
+private static class Node<E> {
+        E item;
+        //后继节点
+        Node<E> next;
+        //前驱节点
+        Node<E> prev;
+
+        Node(Node<E> prev, E element, Node<E> next) {
+            this.item = element;
+            this.next = next;
+            this.prev = prev;
+        }
+    }
+```
+## 3、两者的比较
+
+1、ArrayList底层实现是数组，访问元素时间复杂度是O\(1\)，LinkedList底层实现是双向链表，不支持快速随机访问；
+
+2、内存空间占用：ArrayList会在末尾预留一定的容量空间，LinkedList每个元素都要存储前后指针和元素数据，消耗的空间更大；
+
+3、插入删除：ArrayList的时间复杂度受元素位置影响，LinkedList时间复杂度近似O\(1\)；
+
+4、两个都不是线程安全的。
+
+ps：其实区别的本质来源就是底层实现不同。
