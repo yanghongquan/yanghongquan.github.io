@@ -10,7 +10,7 @@ categories: 源码学习
 
 ThreadPoolExecutor继承于AbstractExecutorService\-\-\>ExecutorService\-\-\>Executor
 
-![](ThreadPoolExecutor\Image.png)
+![类继承关系图](ThreadPoolExecutor/Image.png)
 ## 2、线程池状态
 
 1、用一个int类型表示，共32位，前三位表示线程池状态，后29位表示线程数量，线程池的状态有：
@@ -161,6 +161,7 @@ Worker(Runnable firstTask) {
 5、通过线程池状态来控制任务的执行，每个worker线程可以处理多个任务，线程池通过线程的复用减少了线程创建和销毁的开销，通过使用任务队列避免了线程的阻塞从而避免了线程调度和线程上下文切换的开销。
 
 
-部分来源：[http://ifeve.com/java%E4%B8%AD%E7%BA%BF%E7%A8%8B%E6%B1%A0threadpoolexecutor%E5%8E%9F%E7%90%86%E6%8E%A2%E7%A9%B6/](http://ifeve.com/java中线程池threadpoolexecutor原理探究/)
+部分来源
+：[http://ifeve.com/java%E4%B8%AD%E7%BA%BF%E7%A8%8B%E6%B1%A0threadpoolexecutor%E5%8E%9F%E7%90%86%E6%8E%A2%E7%A9%B6/](http://ifeve.com/java中线程池threadpoolexecutor原理探究/)
 
 
