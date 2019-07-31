@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="JUC,">
+  <meta name="keywords" content="集合,">
 
 
 
@@ -79,20 +79,24 @@
 
 
 
-<meta name="description" content="1、继承关系ThreadPoolExecutor继承于AbstractExecutorService--&amp;gt;ExecutorService--&amp;gt;Executor  2、线程池状态1、用一个int类型表示，共32位，前三位表示线程池状态，后29位表示线程数量，线程池的状态有：  RUNNING：接受新任务并且处理阻塞队列里的任务 SHUTDOWN：拒绝新任务但是处理阻塞队列里的任务 STO">
-<meta name="keywords" content="JUC">
+<meta name="description" content="1、HashMap继承与AbstractMap类，实现了Map接口，允许键为null和值为null，是线程不安全的，内部元素是无序的，利用迭代器遍历元素的时候也会有fail-fast机制。 2、基本参数 123456789101112//必须是2的冥static final int DEFAULT_INITIAL_CAPACITY = 1 &amp;lt;&amp;lt; 4; // aka 16//最大容量，2">
+<meta name="keywords" content="集合">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ThreadPoolExecutor">
-<meta property="og:url" content="https://yanghongquan.github.io/2019/06/08/ThreadPoolExecutor/index.html">
+<meta property="og:title" content="HashMap">
+<meta property="og:url" content="https://yanghongquan.github.io/2019/07/13/HashMap/index.html">
 <meta property="og:site_name" content="yanghongquan">
-<meta property="og:description" content="1、继承关系ThreadPoolExecutor继承于AbstractExecutorService--&amp;gt;ExecutorService--&amp;gt;Executor  2、线程池状态1、用一个int类型表示，共32位，前三位表示线程池状态，后29位表示线程数量，线程池的状态有：  RUNNING：接受新任务并且处理阻塞队列里的任务 SHUTDOWN：拒绝新任务但是处理阻塞队列里的任务 STO">
+<meta property="og:description" content="1、HashMap继承与AbstractMap类，实现了Map接口，允许键为null和值为null，是线程不安全的，内部元素是无序的，利用迭代器遍历元素的时候也会有fail-fast机制。 2、基本参数 123456789101112//必须是2的冥static final int DEFAULT_INITIAL_CAPACITY = 1 &amp;lt;&amp;lt; 4; // aka 16//最大容量，2">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://yanghongquan.github.io/2019/06/08/ThreadPoolExecutor/Image.png">
-<meta property="og:updated_time" content="2019-07-29T12:40:57.641Z">
+<meta property="og:image" content="https://yanghongquan.github.io/2019/07/13/HashMap/Image.png">
+<meta property="og:image" content="https://yanghongquan.github.io/2019/07/13/HashMap/Image1.png">
+<meta property="og:image" content="https://yanghongquan.github.io/2019/07/13/HashMap/Image2.png">
+<meta property="og:image" content="https://yanghongquan.github.io/2019/07/13/HashMap/Image3.png">
+<meta property="og:image" content="https://yanghongquan.github.io/2019/07/13/HashMap/Image4.png">
+<meta property="og:updated_time" content="2019-07-31T03:12:23.206Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ThreadPoolExecutor">
-<meta name="twitter:description" content="1、继承关系ThreadPoolExecutor继承于AbstractExecutorService--&amp;gt;ExecutorService--&amp;gt;Executor  2、线程池状态1、用一个int类型表示，共32位，前三位表示线程池状态，后29位表示线程数量，线程池的状态有：  RUNNING：接受新任务并且处理阻塞队列里的任务 SHUTDOWN：拒绝新任务但是处理阻塞队列里的任务 STO">
-<meta name="twitter:image" content="https://yanghongquan.github.io/2019/06/08/ThreadPoolExecutor/Image.png">
+<meta name="twitter:title" content="HashMap">
+<meta name="twitter:description" content="1、HashMap继承与AbstractMap类，实现了Map接口，允许键为null和值为null，是线程不安全的，内部元素是无序的，利用迭代器遍历元素的时候也会有fail-fast机制。 2、基本参数 123456789101112//必须是2的冥static final int DEFAULT_INITIAL_CAPACITY = 1 &amp;lt;&amp;lt; 4; // aka 16//最大容量，2">
+<meta name="twitter:image" content="https://yanghongquan.github.io/2019/07/13/HashMap/Image.png">
 
 
 
@@ -122,13 +126,13 @@
 
 
 
-  <link rel="canonical" href="https://yanghongquan.github.io/2019/06/08/ThreadPoolExecutor/">
+  <link rel="canonical" href="https://yanghongquan.github.io/2019/07/13/HashMap/">
 
 
 
 
 
-  <title>ThreadPoolExecutor | yanghongquan</title>
+  <title>HashMap | yanghongquan</title>
   
 
 
@@ -298,7 +302,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://yanghongquan.github.io/2019/06/08/ThreadPoolExecutor/">
+    <link itemprop="mainEntityOfPage" href="https://yanghongquan.github.io/2019/07/13/HashMap/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="yanghongquan">
@@ -315,7 +319,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">ThreadPoolExecutor</h1>
+          <h1 class="post-title" itemprop="name headline">HashMap</h1>
         
 
         <div class="post-meta">
@@ -328,8 +332,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-08T22:00:14+08:00">
-                2019-06-08
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-13T20:00:14+08:00">
+                2019-07-13
               </time>
             
 
@@ -382,7 +386,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  1.2k
+                  2.2k
                 </span>
               
 
@@ -407,63 +411,58 @@
       
 
       
-        <h2 id="1、继承关系"><a href="#1、继承关系" class="headerlink" title="1、继承关系"></a>1、继承关系</h2><p>ThreadPoolExecutor继承于AbstractExecutorService--&gt;ExecutorService--&gt;Executor</p>
-<p><img src="/2019/06/08/ThreadPoolExecutor/Image.png" alt="类继承关系图"></p>
-<h2 id="2、线程池状态"><a href="#2、线程池状态" class="headerlink" title="2、线程池状态"></a>2、线程池状态</h2><p>1、用一个int类型表示，共32位，前三位表示线程池状态，后29位表示线程数量，线程池的状态有：</p>
-<ul>
-<li>RUNNING：接受新任务并且处理阻塞队列里的任务</li>
-<li>SHUTDOWN：拒绝新任务但是处理阻塞队列里的任务</li>
-<li>STOP：拒绝新任务并且抛弃阻塞队列里的任务同时会中断正在处理的任务</li>
-<li>TIDYING：所有任务都执行完（包含阻塞队列里面任务）当前线程池活动线程为0，将要调用terminated方法</li>
-<li>TERMINATED：终止状态。terminated方法调用完成以后的状态</li>
-</ul>
-<p>2、各种状态之间的转换</p>
-<ul>
-<li>RUNNING -&gt; SHUTDOWN<br>显式调用shutdown()方法，或者隐式调用了finalize(),它里面调用了shutdown（）方法。</li>
-<li>RUNNING or SHUTDOWN)-&gt; STOP<br>显式 shutdownNow()方法</li>
-<li>SHUTDOWN -&gt; TIDYING<br>当线程池和任务队列都为空的时候</li>
-<li>STOP -&gt; TIDYING<br>当线程池为空的时候</li>
-<li>TIDYING -&gt; TERMINATED<br>当 terminated() hook 方法执行完成时候</li>
-</ul>
-<h2 id="3、构造函数"><a href="#3、构造函数" class="headerlink" title="3、构造函数"></a>3、构造函数</h2><p>有四个构造函数，其他三个都是调用以下这个：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">ThreadPoolExecutor</span><span class="params">(<span class="keyword">int</span> corePoolSize,</span></span></span><br><span class="line"><span class="function"><span class="params">                              <span class="keyword">int</span> maximumPoolSize,</span></span></span><br><span class="line"><span class="function"><span class="params">                              <span class="keyword">long</span> keepAliveTime,</span></span></span><br><span class="line"><span class="function"><span class="params">                              TimeUnit unit,</span></span></span><br><span class="line"><span class="function"><span class="params">                              BlockingQueue&lt;Runnable&gt; workQueue,</span></span></span><br><span class="line"><span class="function"><span class="params">                              ThreadFactory threadFactory,</span></span></span><br><span class="line"><span class="function"><span class="params">                              RejectedExecutionHandler handler)</span></span></span><br></pre></td></tr></table></figure>
+        <p>1、HashMap继承与AbstractMap类，实现了Map接口，允许键为null和值为null，是线程不安全的，内部元素是无序的，利用迭代器遍历元素的时候也会有fail-fast机制。</p>
+<p>2、基本参数</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//必须是2的冥</span></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> DEFAULT_INITIAL_CAPACITY = <span class="number">1</span> &lt;&lt; <span class="number">4</span>; <span class="comment">// aka 16</span></span><br><span class="line"><span class="comment">//最大容量，2的30次方。</span></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> MAXIMUM_CAPACITY = <span class="number">1</span> &lt;&lt; <span class="number">30</span>;</span><br><span class="line"><span class="comment">//加载因子，用于扩容使用。</span></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">float</span> DEFAULT_LOAD_FACTOR = <span class="number">0.75f</span>;</span><br><span class="line"><span class="comment">//当某个桶节点数量大于8时，链表会转换为红黑树。</span></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> TREEIFY_THRESHOLD = <span class="number">8</span>;</span><br><span class="line"><span class="comment">//当某个桶节点数量小于6时，会转换为链表，前提是它当前是红黑树结构。</span></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> UNTREEIFY_THRESHOLD = <span class="number">6</span>;</span><br><span class="line"><span class="comment">//当整个hashMap中table数组元素数量大于64时，每个桶的节点数量超过8时，链表转为红黑树结构。</span></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> MIN_TREEIFY_CAPACITY = <span class="number">64</span>;</span><br></pre></td></tr></table></figure>
 
 <ul>
-<li><p>corePoolSize：线程池核心线程个数</p>
+<li><p>如果哈希表的容量小于64，即使节点的链表数量超过8也不会转化为红黑树，而是先扩容。</p>
 </li>
-<li><p>workQueue：用于保存等待执行的任务的阻塞队列</p>
+<li><p>2的整数次幂,这样做的好处是，length-1正好是低x位均为1，起到一个掩码的作用，而掩码的作用与求余相同。如初始长度16，-1后的二进制为1111，和hash值进行与操作，相当于hash值对16求余。这个求余操作用于将hash值映射到Node数组的空间中，在寻找key对应的bucket时，只需要table[(length-1) &amp; hash(key)]即可，然后遍历其指向的链表即可找到K/V对。</p>
 </li>
-<li><p>maximunPoolSize：线程池最大线程数量</p>
-</li>
-<li><p>keepAliveTime：线程的存活时间。当线程池里的线程数大于corePoolSize时，如果等了keepAliveTime时长还没有任务可执行，则线程退出</p>
-</li>
-<li><p>ThreadFactory：创建线程的工厂，主要是为了给线程起名字，默认工厂的线程名字：pool-1-thread-3</p>
-</li>
-<li><p>TimeUnit：存活时间的时间单位</p>
-</li>
-<li><p>RejectedExecutionHandler：饱和策略，当队列满了并且线程个数达到maximunPoolSize后采取的策略</p>
+</ul>
+<p>3、加载因子load factor一般不需要改变默认值，这是控制数组存放数据疏密程度，越接近1存放的数据就越多越密，也会让链表长度增加，相反越接近0数据就越少越稀疏。如果加载因子太大，数组每个位置上的元素就越多，根据key查找value的时候就得通过equals函数依次比较链表中的元素，对性能影响大；如果太小，数据太稀疏，浪费很多空间。</p>
+<p>4、HashMap的数据结构Node和存储模型：</p>
+<p><img src="/2019/07/13/HashMap/Image.png" alt></p>
+<p>5、存放元素的过程：通过key、value封装成一个Node对象，然后通过key的值来计算该Node的hash值，通过Node的hash值和数组的长度length来计算出Node放在数组中的哪个位置上面，每次存放都是将Node放在第一个位置。还需要判断数组长度和链表长度决定是否需要转换成红黑树的结构。</p>
+<p>6、hash算法（JDK1.8）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> <span class="title">hash</span><span class="params">(Object key)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> h;</span><br><span class="line">        <span class="keyword">return</span> (key == <span class="keyword">null</span>) ? <span class="number">0</span> : (h = key.hashCode()) ^ (h &gt;&gt;&gt; <span class="number">16</span>);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>直接使用key的hashcode()作为hash很容易发生碰撞；而且低位可能出现规律性重复，hashcode的高16位在计算索引中是用不到的，所以从速度、实用性等方面考虑，使key的hashcode()高16位不变，低16位与高16位异或作为最终hash值，混合了原始哈希码的高位和低位，加大了低位的随机性，可以在数组table的length比较小的时候，也能保证考虑到高低Bit都参与到Hash的计算中，同时不会有太大的开销。</p>
+<p>7、拉链法解决冲突：创建一个链表数组，数组每一格就是一个链表，遇到哈希冲突则将冲突的值加到链表中。</p>
+<p>1.8改进：当链表长度大于8时，链表会转化成红黑树，以减少搜索时间。</p>
+<p>8、tableSizeFor()方法返回大于输入参数的第一个是2的冥的数,这个方法被调用的地方是在一个构造函数中，当传入一个初始容量时，会调用 <code>this.threshold = tableSizeFor(initialCapacity)</code> 计算扩容阈值。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> <span class="title">tableSizeFor</span><span class="params">(<span class="keyword">int</span> cap)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = cap - <span class="number">1</span>;</span><br><span class="line">        n |= n &gt;&gt;&gt; <span class="number">1</span>;</span><br><span class="line">        n |= n &gt;&gt;&gt; <span class="number">2</span>;</span><br><span class="line">        n |= n &gt;&gt;&gt; <span class="number">4</span>;</span><br><span class="line">        n |= n &gt;&gt;&gt; <span class="number">8</span>;</span><br><span class="line">        n |= n &gt;&gt;&gt; <span class="number">16</span>;</span><br><span class="line">        <span class="keyword">return</span> (n &lt; <span class="number">0</span>) ? <span class="number">1</span> : (n &gt;= MAXIMUM_CAPACITY) ? MAXIMUM_CAPACITY : n + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2019/07/13/HashMap/Image1.png" alt></p>
+<p>9、put方法的执行流程：</p>
+<p><img src="/2019/07/13/HashMap/Image2.png" alt><br>get方法比较简单，通过hash定位桶，然后根据存储结构决定是遍历树还是链表。</p>
+<p>10、链表转树的方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">final</span> <span class="keyword">void</span> <span class="title">treeifyBin</span><span class="params">(Node&lt;K,V&gt;[] tab, <span class="keyword">int</span> hash)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n, index; Node&lt;K,V&gt; e;</span><br><span class="line">        <span class="comment">//如果数组为null或者容量是小于64，先扩容</span></span><br><span class="line">        <span class="keyword">if</span> (tab == <span class="keyword">null</span> || (n = tab.length) &lt; MIN_TREEIFY_CAPACITY)</span><br><span class="line">            resize();</span><br><span class="line">        <span class="comment">//否则转化成红黑树</span></span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> ((e = tab[index = (n - <span class="number">1</span>) &amp; hash]) != <span class="keyword">null</span>) &#123;</span><br><span class="line">            TreeNode&lt;K,V&gt; hd = <span class="keyword">null</span>, tl = <span class="keyword">null</span>;</span><br><span class="line">            <span class="keyword">do</span> &#123;</span><br><span class="line">                TreeNode&lt;K,V&gt; p = replacementTreeNode(e, <span class="keyword">null</span>);</span><br><span class="line">                <span class="keyword">if</span> (tl == <span class="keyword">null</span>)</span><br><span class="line">                    hd = p;</span><br><span class="line">                <span class="keyword">else</span> &#123;</span><br><span class="line">                    p.prev = tl;</span><br><span class="line">                    tl.next = p;</span><br><span class="line">                &#125;</span><br><span class="line">                tl = p;</span><br><span class="line">            &#125; <span class="keyword">while</span> ((e = e.next) != <span class="keyword">null</span>);</span><br><span class="line">            <span class="comment">//构造红黑树</span></span><br><span class="line">            <span class="keyword">if</span> ((tab[index] = hd) != <span class="keyword">null</span>)</span><br><span class="line">                hd.treeify(tab);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>11、扩容方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">final</span> Node&lt;K,V&gt;[] resize() &#123;</span><br><span class="line">        <span class="comment">//把扩容前的数组复制</span></span><br><span class="line">        Node&lt;K,V&gt;[] oldTab = table;</span><br><span class="line">        <span class="keyword">int</span> oldCap = (oldTab == <span class="keyword">null</span>) ? <span class="number">0</span> : oldTab.length;</span><br><span class="line">        <span class="comment">//threshold是扩容的临界点，=capacity*loadfactor</span></span><br><span class="line">        <span class="keyword">int</span> oldThr = threshold;</span><br><span class="line">        <span class="keyword">int</span> newCap, newThr = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span> (oldCap &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="comment">//如果已经到达最大容量了，就不再扩容，直接返回</span></span><br><span class="line">            <span class="keyword">if</span> (oldCap &gt;= MAXIMUM_CAPACITY) &#123;</span><br><span class="line">                threshold = Integer.MAX_VALUE;</span><br><span class="line">                <span class="keyword">return</span> oldTab;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//没超过最大值就扩容2倍</span></span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> ((newCap = oldCap &lt;&lt; <span class="number">1</span>) &lt; MAXIMUM_CAPACITY &amp;&amp;</span><br><span class="line">                     oldCap &gt;= DEFAULT_INITIAL_CAPACITY)</span><br><span class="line">                newThr = oldThr &lt;&lt; <span class="number">1</span>; <span class="comment">// double threshold</span></span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (oldThr &gt; <span class="number">0</span>) <span class="comment">// initial capacity was placed in threshold</span></span><br><span class="line">            newCap = oldThr;</span><br><span class="line">        <span class="keyword">else</span> &#123;               <span class="comment">// zero initial threshold signifies using defaults</span></span><br><span class="line">            newCap = DEFAULT_INITIAL_CAPACITY;</span><br><span class="line">            newThr = (<span class="keyword">int</span>)(DEFAULT_LOAD_FACTOR * DEFAULT_INITIAL_CAPACITY);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (newThr == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">float</span> ft = (<span class="keyword">float</span>)newCap * loadFactor;</span><br><span class="line">            newThr = (newCap &lt; MAXIMUM_CAPACITY &amp;&amp; ft &lt; (<span class="keyword">float</span>)MAXIMUM_CAPACITY ?</span><br><span class="line">                      (<span class="keyword">int</span>)ft : Integer.MAX_VALUE);</span><br><span class="line">        &#125;</span><br><span class="line">        threshold = newThr;</span><br><span class="line">        <span class="meta">@SuppressWarnings</span>(&#123;<span class="string">"rawtypes"</span>,<span class="string">"unchecked"</span>&#125;)</span><br><span class="line">            Node&lt;K,V&gt;[] newTab = (Node&lt;K,V&gt;[])<span class="keyword">new</span> Node[newCap];</span><br><span class="line">        table = newTab;</span><br><span class="line">        <span class="keyword">if</span> (oldTab != <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="comment">//遍历每个桶，移动旧桶的元素到新的桶</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; oldCap; ++j) &#123;</span><br><span class="line">                Node&lt;K,V&gt; e;</span><br><span class="line">                <span class="keyword">if</span> ((e = oldTab[j]) != <span class="keyword">null</span>) &#123;</span><br><span class="line">                    oldTab[j] = <span class="keyword">null</span>;</span><br><span class="line">                    <span class="comment">//如果桶只有一个元素，直接散列定位保存</span></span><br><span class="line">                    <span class="keyword">if</span> (e.next == <span class="keyword">null</span>)</span><br><span class="line">                        newTab[e.hash &amp; (newCap - <span class="number">1</span>)] = e;</span><br><span class="line">                    <span class="comment">//重构红黑树</span></span><br><span class="line">                    <span class="keyword">else</span> <span class="keyword">if</span> (e <span class="keyword">instanceof</span> TreeNode)</span><br><span class="line">                        ((TreeNode&lt;K,V&gt;)e).split(<span class="keyword">this</span>, newTab, j, oldCap);</span><br><span class="line">                    <span class="keyword">else</span> &#123; <span class="comment">// preserve order</span></span><br><span class="line">                        Node&lt;K,V&gt; loHead = <span class="keyword">null</span>, loTail = <span class="keyword">null</span>;</span><br><span class="line">                        Node&lt;K,V&gt; hiHead = <span class="keyword">null</span>, hiTail = <span class="keyword">null</span>;</span><br><span class="line">                        Node&lt;K,V&gt; next;</span><br><span class="line">                        <span class="keyword">do</span> &#123;</span><br><span class="line">                            next = e.next;</span><br><span class="line">                            <span class="keyword">if</span> ((e.hash &amp; oldCap) == <span class="number">0</span>) &#123;</span><br><span class="line">                                <span class="keyword">if</span> (loTail == <span class="keyword">null</span>)</span><br><span class="line">                                    loHead = e;</span><br><span class="line">                                <span class="keyword">else</span></span><br><span class="line">                                    loTail.next = e;</span><br><span class="line">                                loTail = e;</span><br><span class="line">                            &#125;</span><br><span class="line">                            <span class="keyword">else</span> &#123;</span><br><span class="line">                                <span class="keyword">if</span> (hiTail == <span class="keyword">null</span>)</span><br><span class="line">                                    hiHead = e;</span><br><span class="line">                                <span class="keyword">else</span></span><br><span class="line">                                    hiTail.next = e;</span><br><span class="line">                                hiTail = e;</span><br><span class="line">                            &#125;</span><br><span class="line">                        &#125; <span class="keyword">while</span> ((e = next) != <span class="keyword">null</span>);</span><br><span class="line">                        <span class="comment">//放到扩容后新桶的原索引处</span></span><br><span class="line">                        <span class="keyword">if</span> (loTail != <span class="keyword">null</span>) &#123;</span><br><span class="line">                            loTail.next = <span class="keyword">null</span>;</span><br><span class="line">                            newTab[j] = loHead;</span><br><span class="line">                        &#125;</span><br><span class="line">                        <span class="comment">//放到扩容后新桶的 原索引+oldCap 处</span></span><br><span class="line">                        <span class="keyword">if</span> (hiTail != <span class="keyword">null</span>) &#123;</span><br><span class="line">                            hiTail.next = <span class="keyword">null</span>;</span><br><span class="line">                            newTab[j + oldCap] = hiHead;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> newTab;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>在JDK1.8中我们可以发现，我们使用的是2次幂的扩展(指长度扩为原来2倍)，所以，元素的位置要么是在原位置，要么是在原位置再移动2次幂的位置。看下图可以明白这句话的意思，n为table的长度，图（a）表示扩容前的key1和key2两种key确定索引位置的示例，图（b）表示扩容后key1和key2两种key确定索引位置的示例，其中hash1是key1对应的哈希与高位运算结果。</p>
+<p><img src="/2019/07/13/HashMap/Image3.png" alt></p>
+<p>元素在重新计算hash之后，因为n变为2倍，那么n-1的mask范围在高位多1bit(红色)，因此新的index就会发生这样的变化：</p>
+<p><img src="/2019/07/13/HashMap/Image4.png" alt></p>
+<p>因此，我们在扩充HashMap的时候，不需要像JDK1.7的实现那样重新计算hash，只需要看看原来的hash值新增的那个bit是1还是0就好了，是0的话索引没变，是1的话索引变成 原索引+oldCap。</p>
+<p>12、为什么获取下标的时候使用位运算的原因：效率；处理负数更方便，因为length-1是正数，高位为0，与操作之后的高位一定是0，也就是得到的是一个正数。</p>
+<p>13、线程不安全的问题：</p>
 <ul>
-<li><p>AbortPolicy：直接抛出 <code>RejectedExecutionException</code> 异常；</p>
+<li><p>多线程下put操作会导致丢失数据的问题：</p>
+<blockquote>
+<p>比如有两个线程A和B，首先A希望插入一个key-value对到HashMap中，首先计算记录所要落到的 hash桶的索引坐标，然后获取到该桶里面的链表头结点，此时线程A的时间片用完了，而此时线程B被调度得以执行，和线程A一样执行，只不过线程B成功将记录插到了桶里面，假设线程A插入的记录计算出来的 hash桶索引和线程B要插入的记录计算出来的 hash桶索引是一样的，那么当线程B成功插入之后，线程A再次被调度运行时，它依然持有过期的链表头但是它对此一无所知，以至于它认为它应该这样做，如此一来就覆盖了线程B插入的记录，这样线程B插入的记录就凭空消失了，造成了数据不一致的行为。</p>
+</blockquote>
 </li>
-<li><p>CallerRunsPolicy：使用调用者所在线程来运行任务；</p>
-</li>
-<li><p>DiscardOldestPolicy：调用poll丢弃队列里面最老的（队尾）任务，执行当前任务；</p>
-</li>
-<li><p>DiscardPolicy：默默丢弃,不抛出异常。</p>
+<li><p>JDK1.7版本的resize()有死循环的问题</p>
+<blockquote>
+<p>因为扩容之后链表重组用的是头插法，多线程下会出现死循环。1.8版本链表重组是直接将元素添加到表尾。</p>
+</blockquote>
 </li>
 </ul>
-</li>
-</ul>
-<h2 id="4、执行过程"><a href="#4、执行过程" class="headerlink" title="4、执行过程"></a>4、执行过程</h2><p>1、如果当前线程池线程个数小于corePoolSize则调用addWorker开启新线程；否则添加任务到任务队列；如果任务队列满了，则尝试调用addWorker新开启线程执行任务，如果线程个数&gt;maximumPoolSize则执行拒绝策略。</p>
-<p>2、addWorker方法</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">addWorker</span><span class="params">(Runnable firstTask, <span class="keyword">boolean</span> core)</span> </span>&#123;</span><br><span class="line">   retry:</span><br><span class="line">   <span class="keyword">for</span> (;;) &#123;</span><br><span class="line">       <span class="keyword">int</span> c = ctl.get();</span><br><span class="line">       <span class="keyword">int</span> rs = runStateOf(c);</span><br><span class="line"></span><br><span class="line">       <span class="comment">// 检查队列是否只在必要时为空.（1）</span></span><br><span class="line">       <span class="keyword">if</span> (rs &gt;= SHUTDOWN &amp;&amp;</span><br><span class="line">           ! (rs == SHUTDOWN &amp;&amp;</span><br><span class="line">              firstTask == <span class="keyword">null</span> &amp;&amp;</span><br><span class="line">              ! workQueue.isEmpty()))</span><br><span class="line">           <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line"></span><br><span class="line">       <span class="comment">//循环cas增加线程个数</span></span><br><span class="line">       <span class="keyword">for</span> (;;) &#123;</span><br><span class="line">           <span class="keyword">int</span> wc = workerCountOf(c);</span><br><span class="line"></span><br><span class="line">           <span class="comment">//如果线程个数超限则返回false</span></span><br><span class="line">           <span class="keyword">if</span> (wc &gt;= CAPACITY ||</span><br><span class="line">               wc &gt;= (core ? corePoolSize : maximumPoolSize))</span><br><span class="line">               <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">           <span class="comment">//cas增加线程个数，同时只有一个线程成功</span></span><br><span class="line">           <span class="keyword">if</span> (compareAndIncrementWorkerCount(c))</span><br><span class="line">               <span class="keyword">break</span> retry;</span><br><span class="line">           <span class="comment">//cas失败了，则看线程池状态是否变化了，变化则跳到外层循环重试重新获取线程池状态，否者内层循环重新cas。</span></span><br><span class="line">           c = ctl.get();  <span class="comment">// Re-read ctl</span></span><br><span class="line">           <span class="keyword">if</span> (runStateOf(c) != rs)</span><br><span class="line">               <span class="keyword">continue</span> retry;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="comment">//到这里说明cas成功了，（2）</span></span><br><span class="line">   <span class="keyword">boolean</span> workerStarted = <span class="keyword">false</span>;</span><br><span class="line">   <span class="keyword">boolean</span> workerAdded = <span class="keyword">false</span>;</span><br><span class="line">   Worker w = <span class="keyword">null</span>;</span><br><span class="line">   <span class="keyword">try</span> &#123;</span><br><span class="line">       <span class="comment">//创建worker</span></span><br><span class="line">       <span class="keyword">final</span> ReentrantLock mainLock = <span class="keyword">this</span>.mainLock;</span><br><span class="line">       w = <span class="keyword">new</span> Worker(firstTask);</span><br><span class="line">       <span class="keyword">final</span> Thread t = w.thread;</span><br><span class="line">       <span class="keyword">if</span> (t != <span class="keyword">null</span>) &#123;</span><br><span class="line"></span><br><span class="line">           <span class="comment">//加独占锁，为了workers同步，因为可能多个线程调用了线程池的execute方法。</span></span><br><span class="line">           mainLock.lock();</span><br><span class="line">           <span class="keyword">try</span> &#123;</span><br><span class="line">               </span><br><span class="line">               <span class="comment">//重新检查线程池状态，为了避免在获取锁前调用了shutdown接口(3)</span></span><br><span class="line">               <span class="keyword">int</span> c = ctl.get();</span><br><span class="line">               <span class="keyword">int</span> rs = runStateOf(c);</span><br><span class="line"></span><br><span class="line">               <span class="keyword">if</span> (rs &lt; SHUTDOWN ||</span><br><span class="line">                   (rs == SHUTDOWN &amp;&amp; firstTask == <span class="keyword">null</span>)) &#123;</span><br><span class="line">                   <span class="keyword">if</span> (t.isAlive()) <span class="comment">// precheck that t is startable</span></span><br><span class="line">                       <span class="keyword">throw</span> <span class="keyword">new</span> IllegalThreadStateException();</span><br><span class="line">                   <span class="comment">//添加任务</span></span><br><span class="line">                   workers.add(w);</span><br><span class="line">                   <span class="keyword">int</span> s = workers.size();</span><br><span class="line">                   <span class="keyword">if</span> (s &gt; largestPoolSize)</span><br><span class="line">                       largestPoolSize = s;</span><br><span class="line">                   workerAdded = <span class="keyword">true</span>;</span><br><span class="line">               &#125;</span><br><span class="line">           &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">               mainLock.unlock();</span><br><span class="line">           &#125;</span><br><span class="line">           <span class="comment">//添加成功则启动任务</span></span><br><span class="line">           <span class="keyword">if</span> (workerAdded) &#123;</span><br><span class="line">               t.start();</span><br><span class="line">               workerStarted = <span class="keyword">true</span>;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">       <span class="keyword">if</span> (! workerStarted)</span><br><span class="line">           addWorkerFailed(w);</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">return</span> workerStarted;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>3、工作线程Worker的执行</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Worker(Runnable firstTask) &#123;</span><br><span class="line">   setState(-<span class="number">1</span>); <span class="comment">// 在调用runWorker前禁止中断</span></span><br><span class="line">   <span class="keyword">this</span>.firstTask = firstTask;</span><br><span class="line">   <span class="keyword">this</span>.thread = getThreadFactory().newThread(<span class="keyword">this</span>);<span class="comment">//创建一个线程</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>4、调用shutdown后，线程池就不会在接受新的任务了，但是工作队列里面的任务还是要执行的，但是该方法立刻返回的，并不等待队列任务完成在返回。调用awaitTermination完成队列里面的任务的处理</p>
-<p>5、通过线程池状态来控制任务的执行，每个worker线程可以处理多个任务，线程池通过线程的复用减少了线程创建和销毁的开销，通过使用任务队列避免了线程的阻塞从而避免了线程调度和线程上下文切换的开销。</p>
-<p>部分来源<br>：<a href="http://ifeve.com/java中线程池threadpoolexecutor原理探究/" target="_blank" rel="noopener">http://ifeve.com/java%E4%B8%AD%E7%BA%BF%E7%A8%8B%E6%B1%A0threadpoolexecutor%E5%8E%9F%E7%90%86%E6%8E%A2%E7%A9%B6/</a></p>
+<h3 id="部分参考："><a href="#部分参考：" class="headerlink" title="部分参考："></a>部分参考：</h3><p><a href="https://itimetraveler.github.io/2018/07/19/【Java】J.U.C并发包%20-%20AQS机制/" target="_blank" rel="noopener">https://itimetraveler.github.io/2018/07/19/%E3%80%90Java%E3%80%91J.U.C%E5%B9%B6%E5%8F%91%E5%8C%85%20-%20AQS%E6%9C%BA%E5%88%B6/</a></p>
 
       
     </div>
@@ -490,7 +489,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/JUC/" rel="tag"><i class="fa fa-tag"></i> JUC</a>
+            <a href="/tags/集合/" rel="tag"><i class="fa fa-tag"></i> 集合</a>
           
         </div>
       
@@ -503,8 +502,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/04/15/TCP与UDP/" rel="next" title="TCP与UDP的比较">
-                <i class="fa fa-chevron-left"></i> TCP与UDP的比较
+              <a href="/2019/07/08/高性能MySQL/" rel="next" title="高性能MySQL">
+                <i class="fa fa-chevron-left"></i> 高性能MySQL
               </a>
             
           </div>
@@ -512,10 +511,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/06/10/ArrayList和LinkedList/" rel="prev" title="ArrayList和LinkedList">
-                ArrayList和LinkedList <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -665,7 +660,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、继承关系"><span class="nav-number">1.</span> <span class="nav-text">1、继承关系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、线程池状态"><span class="nav-number">2.</span> <span class="nav-text">2、线程池状态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、构造函数"><span class="nav-number">3.</span> <span class="nav-text">3、构造函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4、执行过程"><span class="nav-number">4.</span> <span class="nav-text">4、执行过程</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#部分参考："><span class="nav-number">1.</span> <span class="nav-text">部分参考：</span></a></li></ol></div>
             
 
           </div>
