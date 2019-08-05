@@ -35,7 +35,6 @@ categories: 源码学习
 
 
 ![](HashMap/Image.png)
-
 5、存放元素的过程：通过key、value封装成一个Node对象，然后通过key的值来计算该Node的hash值，通过Node的hash值和数组的长度length来计算出Node放在数组中的哪个位置上面，每次存放都是将Node放在第一个位置。还需要判断数组长度和链表长度决定是否需要转换成红黑树的结构。
 
 6、hash算法（JDK1.8）
@@ -68,7 +67,6 @@ static final int tableSizeFor(int cap) {
 
 
 ![](HashMap/Image1.png)
-
 9、put方法的执行流程：
 
 
@@ -195,25 +193,41 @@ final Node<K,V>[] resize() {
 
 
 ![](HashMap/Image3.png)
-
 元素在重新计算hash之后，因为n变为2倍，那么n\-1的mask范围在高位多1bit\(红色\)，因此新的index就会发生这样的变化：
 
 
 
 ![](HashMap/Image4.png)
-
-因此，我们在扩充HashMap的时候，不需要像JDK1.7的实现那样重新计算hash，只需要看看原来的hash值新增的那个bit是1还是0就好了，是0的话索引没变，是1的话索引变成 原索引\+oldCap。
+因此，我们在扩充HashMap的时候，不需要像JDK1.7的实现那样重新计算hash，只需要看看原来的hash值新增的那个bit是1还是0就好了，是0的话索引没变，是1的话索引变成“**原索引\+oldCap**”。
 
 12、为什么获取下标的时候使用位运算的原因：效率；处理负数更方便，因为length\-1是正数，高位为0，与操作之后的高位一定是0，也就是得到的是一个正数。
 
-13、线程不安全的问题：
+**13、序列化与反序列化**
+
+HashMap源码中 `readObject()` 和 `writeObject()` 方法都是为了序列化而创建的，JDK提供的对于Java对象序列化操作的类是 `ObjectOutputStream` ，反序列化的类是 `ObjectInputStream` ， `ObjectOutputStream` 中进行序列化操作的时候，会判断被序列化的对象是否自己重写了 `writeObject()` 方法，如果重写了，就会调用被序列化对象自己的 `writeObject()` 方法，如果没有重写，才会调用默认的序列化方法。
+
+* 为什么HashMap中这两个方法是私有的？
+> 方法是私有的，那么该方法无法被子类override，这样做有什么好处呢？ 如果我实现了一个继承HashMap的类，我也想有自己的序列化和反序列化方法，那我也可以实现私有的readObject和writeObject方法，而不用关心HashMap自己的那一部分。
+* HashMap为什么不使用JDK统一的默认序列化和反序列化？
+> 首先要明确序列化的目的，将java对象序列化，一定是为了在某个时刻能够将该对象反序列化，而且一般来讲序列化和反序列化所在的机器是不同的，因为序列化最常用的场景就是跨机器的调用，而序列化和反序列化的一个最基本的要求就是，反序列化之后的对象与序列化之前的对象是一致的。 HashMap中，由于Entry的存放位置是根据Key的Hash值来计算，然后存放到数组中的，对于同一个Key，在不同的JVM实现中计算得出的Hash值可能是不同的。 Hash值不同导致的结果就是：有可能一个HashMap对象的反序列化结果与序列化之前的结果不一致。
+
+* HashMap解决反序列化和序列化之前结果不一致的问题：
+> 1、将可能会造成数据不一致的元素使用 `transient` 关键字修饰，从而避免JDK中默认序列化方法对该对象的序列化操作。不序列化的包括： `Entry[] table,size,modCount` ；2、自己实现writeObject方法，从而保证序列化和反序列化结果的一致性。
+* HashMap保证序列化和反序列化数据的一致性：
+> 1、首先，HashMap序列化的时候不会将保存数据的数组序列化，而是将元素个数以及每个元素的Key和Value都进行序列化；2、在反序列化的时候，重新计算Key和Value的位置，重新填充一个数组。
+
+14、线程不安全的问题：
 
 * 多线程下put操作会导致丢失数据的问题：
 > 比如有两个线程A和B，首先A希望插入一个key\-value对到HashMap中，首先计算记录所要落到的 hash桶的索引坐标，然后获取到该桶里面的链表头结点，此时线程A的时间片用完了，而此时线程B被调度得以执行，和线程A一样执行，只不过线程B成功将记录插到了桶里面，假设线程A插入的记录计算出来的 hash桶索引和线程B要插入的记录计算出来的 hash桶索引是一样的，那么当线程B成功插入之后，线程A再次被调度运行时，它依然持有过期的链表头但是它对此一无所知，以至于它认为它应该这样做，如此一来就覆盖了线程B插入的记录，这样线程B插入的记录就凭空消失了，造成了数据不一致的行为。
 
 * JDK1\.7版本的resize\(\)有死循环的问题
-> 因为扩容之后链表重组用的是头插法，多线程下会出现死循环。1.8版本链表重组是直接将元素添加到表尾。
+> 因为扩容之后链表重组用的是头插法，多线程下会出现死循环
 
 ### 部分参考：
 
-[https://itimetraveler.github.io/2018/07/19/%E3%80%90Java%E3%80%91J.U.C%E5%B9%B6%E5%8F%91%E5%8C%85%20\-%20AQS%E6%9C%BA%E5%88%B6/](https://itimetraveler.github.io/2018/07/19/【Java】J.U.C并发包%20-%20AQS机制/)
+\[HashMap源码分析（JDK1.8）\]\(https://itimetraveler.github.io/2017/11/25/%E3%80%90Java%E3%80%91HashMap%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90%EF%BC%88JDK1.8%EF%BC%89/\)
+
+\[为什么HashMap要自己实现writeObject和readObject方法？\]\(https://my.oschina.net/newever/blog/735470\)
+
+
