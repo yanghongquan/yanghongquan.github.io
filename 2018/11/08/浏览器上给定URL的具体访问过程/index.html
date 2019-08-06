@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="1、Http协议基于应用层的一个规范标准，通信双方都要遵守 2、一次Http请求的完整过程1、浏览器输入一个地址，首先要进行域名解析，浏览器先去系统的host文件查找有没有域名对应的IP，如果没有再去本地DNS服务器（由运营商提供）查询是否有对应的IP地址；2、本地DNS服务器如果没有，需要到根域服务器查询，查询方式有两种：  迭代查询 当遇到自己服务器不能回答的DNS查询请求时，把能解析该域名的">
+<meta name="description" content="1、Http协议基于应用层的一个规范标准，通信双方都要遵守 2、一次Http请求的完整过程1、浏览器输入一个地址，首先要进行域名解析，浏览器先去系统的host文件查找有没有域名对应的IP，如果没有再去本地DNS服务器（由运营商提供）查询是否有对应的IP地址；2、本地DNS服务器如果没有，需要到根域服务器查询，查询方式有两种：  迭代查询   当遇到自己服务器不能回答的DNS查询请求时，把能解析该域">
 <meta name="keywords" content="JavaWeb">
 <meta property="og:type" content="article">
 <meta property="og:title" content="浏览器上给定URL的具体访问过程">
 <meta property="og:url" content="https://yanghongquan.github.io/2018/11/08/浏览器上给定URL的具体访问过程/index.html">
 <meta property="og:site_name" content="yanghongquan">
-<meta property="og:description" content="1、Http协议基于应用层的一个规范标准，通信双方都要遵守 2、一次Http请求的完整过程1、浏览器输入一个地址，首先要进行域名解析，浏览器先去系统的host文件查找有没有域名对应的IP，如果没有再去本地DNS服务器（由运营商提供）查询是否有对应的IP地址；2、本地DNS服务器如果没有，需要到根域服务器查询，查询方式有两种：  迭代查询 当遇到自己服务器不能回答的DNS查询请求时，把能解析该域名的">
+<meta property="og:description" content="1、Http协议基于应用层的一个规范标准，通信双方都要遵守 2、一次Http请求的完整过程1、浏览器输入一个地址，首先要进行域名解析，浏览器先去系统的host文件查找有没有域名对应的IP，如果没有再去本地DNS服务器（由运营商提供）查询是否有对应的IP地址；2、本地DNS服务器如果没有，需要到根域服务器查询，查询方式有两种：  迭代查询   当遇到自己服务器不能回答的DNS查询请求时，把能解析该域">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-06T02:13:39.790Z">
+<meta property="og:updated_time" content="2019-08-06T02:46:08.807Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="浏览器上给定URL的具体访问过程">
-<meta name="twitter:description" content="1、Http协议基于应用层的一个规范标准，通信双方都要遵守 2、一次Http请求的完整过程1、浏览器输入一个地址，首先要进行域名解析，浏览器先去系统的host文件查找有没有域名对应的IP，如果没有再去本地DNS服务器（由运营商提供）查询是否有对应的IP地址；2、本地DNS服务器如果没有，需要到根域服务器查询，查询方式有两种：  迭代查询 当遇到自己服务器不能回答的DNS查询请求时，把能解析该域名的">
+<meta name="twitter:description" content="1、Http协议基于应用层的一个规范标准，通信双方都要遵守 2、一次Http请求的完整过程1、浏览器输入一个地址，首先要进行域名解析，浏览器先去系统的host文件查找有没有域名对应的IP，如果没有再去本地DNS服务器（由运营商提供）查询是否有对应的IP地址；2、本地DNS服务器如果没有，需要到根域服务器查询，查询方式有两种：  迭代查询   当遇到自己服务器不能回答的DNS查询请求时，把能解析该域">
 
 
 
@@ -380,7 +380,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  898
+                  900
                 </span>
               
 
@@ -408,29 +408,42 @@
         <h3 id="1、Http协议"><a href="#1、Http协议" class="headerlink" title="1、Http协议"></a>1、Http协议</h3><p>基于应用层的一个规范标准，通信双方都要遵守</p>
 <h3 id="2、一次Http请求的完整过程"><a href="#2、一次Http请求的完整过程" class="headerlink" title="2、一次Http请求的完整过程"></a>2、一次Http请求的完整过程</h3><p>1、浏览器输入一个地址，首先要进行域名解析，浏览器先去系统的host文件查找有没有域名对应的IP，如果没有再去本地DNS服务器（由运营商提供）查询是否有对应的IP地址；<br>2、本地DNS服务器如果没有，需要到根域服务器查询，查询方式有两种：</p>
 <ul>
-<li>迭代查询<blockquote>
+<li>迭代查询</li>
+</ul>
+<blockquote>
 <p>当遇到自己服务器不能回答的DNS查询请求时，把能解析该域名的服务器地址返回给客户端DNS程序，最终客户端只和一台服务器进行了域名/IP信息的传送</p>
 </blockquote>
-</li>
-<li>递归查询<blockquote>
+<ul>
+<li>递归查询</li>
+</ul>
+<blockquote>
 <p>当遇到自己服务器不能回答的DNS查询请求时，它会逐级往下向其他DNS服务器进行查询，最后所有参与此次查询IP的服务器都会得到该域名和对应IP信息</p>
 </blockquote>
-</li>
-</ul>
-<p>3、经过DNS服务器解析之后客户端得到域名的IP地址，首先发起TCP连接请求（三次握手）；<br>4、建立起TCP连接之后，客户端发起Http请求；<br>5、连接建立之后服务端进行响应，客户端接收响应并展示给用户；<br>6、浏览器得到HTML代码，会进行解析，这个过程中可能还会不断通过Ajax向服务端发起异步加载的请求，最终将页面完整展示</p>
+<p>3、经过DNS服务器解析之后客户端得到域名的IP地址，首先发起TCP连接请求（三次握手）；</p>
+<p>4、建立起TCP连接之后，客户端发起Http请求；</p>
+<p>5、连接建立之后服务端进行响应，客户端接收响应并展示给用户；</p>
+<p>6、浏览器得到HTML代码，会进行解析，这个过程中可能还会不断通过Ajax向服务端发起异步加载的请求，最终将页面完整展示</p>
 <h3 id="3、GET和POST请求的区别"><a href="#3、GET和POST请求的区别" class="headerlink" title="3、GET和POST请求的区别"></a>3、GET和POST请求的区别</h3><p>1、GET请求中的参数包含在URL中，数据可以在URL中看到，而POST请求的URL不会包含这些数据，数据都是通过表单形式传输，会包含在请求体中；<br>２、GET请求提交的数据最多只有1024字节，而POST方式没有限制。</p>
 <blockquote>
 <p>需要提交用户密码和用户名，其中包含敏感信息，使用GET请求的话密码就会暴露在URL中，所以应该选POST。上传文件内容比较大，也应该选POST。</p>
 </blockquote>
-<h3 id="4、Http协议的无状态"><a href="#4、Http协议的无状态" class="headerlink" title="4、Http协议的无状态"></a>4、Http协议的无状态</h3><p>1、无状态是指Http协议对事务的处理没有记忆能力，服务器不知道客户端是什么状态<br>2、保持状态的两种技术：session和cookie。session保存在服务端，cookie保存在客户端<br>3、浏览器关闭cookie消失，但是session是服务器端的，不会被删除。</p>
-<h3 id="5、Https协议-Http协议-SSL（安全套接字）"><a href="#5、Https协议-Http协议-SSL（安全套接字）" class="headerlink" title="5、Https协议 = Http协议 + SSL（安全套接字）"></a>5、Https协议 = Http协议 + SSL（安全套接字）</h3><p>1、https减低用户访问速度，因为多了很多次握手<br>2、安全</p>
+<h3 id="4、Http协议的无状态"><a href="#4、Http协议的无状态" class="headerlink" title="4、Http协议的无状态"></a>4、Http协议的无状态</h3><p>1、无状态是指Http协议对事务的处理没有记忆能力，服务器不知道客户端是什么状态</p>
+<p>2、保持状态的两种技术：session和cookie。session保存在服务端，cookie保存在客户端</p>
+<p>3、浏览器关闭cookie消失，但是session是服务器端的，不会被删除。</p>
+<h3 id="5、Https协议-Http协议-SSL（安全套接字）"><a href="#5、Https协议-Http协议-SSL（安全套接字）" class="headerlink" title="5、Https协议 = Http协议 + SSL（安全套接字）"></a>5、Https协议 = Http协议 + SSL（安全套接字）</h3><p>1、https减低用户访问速度，因为多了很多次握手</p>
+<p>2、安全</p>
 <ul>
 <li>所有信息都是加密的</li>
 <li>有校验机制，一旦篡改通信双方都会发现；</li>
 <li>配备身份证书，防止身份被冒充</li>
 </ul>
-<h3 id="6、涉及到的协议"><a href="#6、涉及到的协议" class="headerlink" title="6、涉及到的协议"></a>6、涉及到的协议</h3><p>1、DNS解析：DNS协议（应用层）、UDP（传输层，DNS报文由UDP传输，因为开销小，每次只涉及两个包，而TCP至少涉及到9个包）、ARP<br>2、TCP（传输层）<br>3、HTTP/HTTPS（应用层）</p>
-<h3 id="7、HTTP和HTTPS的区别"><a href="#7、HTTP和HTTPS的区别" class="headerlink" title="7、HTTP和HTTPS的区别"></a>7、HTTP和HTTPS的区别</h3><p>1、https协议需要到ca申请证书，一般免费证书较少，因而需要一定费用。<br>2、http是超文本传输协议，信息是明文传输，https则是具有安全性的ssl加密传输协议。<br>3、http和https使用的是完全不同的连接方式，用的端口也不一样，前者是80，后者是443。<br>4、http的连接很简单，是无状态的；HTTPS协议是由SSL+HTTP协议构建的可进行加密传输、身份认证的网络协议，比http协议安全。</p>
+<h3 id="6、涉及到的协议"><a href="#6、涉及到的协议" class="headerlink" title="6、涉及到的协议"></a>6、涉及到的协议</h3><p>1、DNS解析：DNS协议（应用层）、UDP（传输层，DNS报文由UDP传输，因为开销小，每次只涉及两个包，而TCP至少涉及到9个包）、ARP</p>
+<p>2、TCP（传输层）</p>
+<p>3、HTTP/HTTPS（应用层）</p>
+<h3 id="7、HTTP和HTTPS的区别"><a href="#7、HTTP和HTTPS的区别" class="headerlink" title="7、HTTP和HTTPS的区别"></a>7、HTTP和HTTPS的区别</h3><p>1、https协议需要到ca申请证书，一般免费证书较少，因而需要一定费用。</p>
+<p>2、http是超文本传输协议，信息是明文传输，https则是具有安全性的ssl加密传输协议。</p>
+<p>3、http和https使用的是完全不同的连接方式，用的端口也不一样，前者是80，后者是443。</p>
+<p>4、http的连接很简单，是无状态的；HTTPS协议是由SSL+HTTP协议构建的可进行加密传输、身份认证的网络协议，比http协议安全。</p>
 
       
     </div>
