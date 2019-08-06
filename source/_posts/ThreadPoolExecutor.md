@@ -161,7 +161,7 @@ Worker(Runnable firstTask) {
 5、通过线程池状态来控制任务的执行，每个worker线程可以处理多个任务，线程池通过线程的复用减少了线程创建和销毁的开销，通过使用任务队列避免了线程的阻塞从而避免了线程调度和线程上下文切换的开销。
 
 
-部分来源
-：[http://ifeve.com/java%E4%B8%AD%E7%BA%BF%E7%A8%8B%E6%B1%A0threadpoolexecutor%E5%8E%9F%E7%90%86%E6%8E%A2%E7%A9%B6/](http://ifeve.com/java中线程池threadpoolexecutor原理探究/)
+部分来源：
+[Java中线程池ThreadPoolExecutor原理探究](http://ifeve.com/java%E4%B8%AD%E7%BA%BF%E7%A8%8B%E6%B1%A0threadpoolexecutor%E5%8E%9F%E7%90%86%E6%8E%A2%E7%A9%B6/)
 
 
