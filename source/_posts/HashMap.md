@@ -226,8 +226,6 @@ HashMap源码中 `readObject()` 和 `writeObject()` 方法都是为了序列化�
 
 ### 部分参考：
 
-\[HashMap源码分析（JDK1.8）\]\(https://itimetraveler.github.io/2017/11/25/%E3%80%90Java%E3%80%91HashMap%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90%EF%BC%88JDK1.8%EF%BC%89/\)
+[HashMap源码分析（JDK1.8）](https://itimetraveler.github.io/2017/11/25/%E3%80%90Java%E3%80%91HashMap%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90%EF%BC%88JDK1.8%EF%BC%89/)
 
-\[为什么HashMap要自己实现writeObject和readObject方法？\]\(https://my.oschina.net/newever/blog/735470\)
-
-
+[为什么HashMap要自己实现writeObject和readObject方法？](https://my.oschina.net/newever/blog/735470)
